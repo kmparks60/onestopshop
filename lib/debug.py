@@ -1,20 +1,14 @@
-from sqlalchemy import (PrimaryKeyConstraint, Column, String, Integer) 
-from sqlalchemy.ext.declarative import declarative_base
+#!/usr/bin/env python3
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-Base = declarative_base()
+from db.models import Store, Customer, Inventory
 
+if __name__ == '__main__':
+    engine = create_engine('sqlite:///db/onestopshop.db')
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    breakpoint()
 
-
-class Store(Base):
-    __tablename__ = 'stores'
-    __table_args__ = (PrimaryKeyConstraint('id'),)
-
-    id = Column( Integer() )
-    name = Column( String() )
-    location = Column( String() )
-
-    # def __repr__(self):
-    #     return f"ID: { self.id }, " \
-    #     + f"Name: { self.name } " \
-    #     + f"Species: { self.location } "
+    import ipdb; ipdb.set_trace
