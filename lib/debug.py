@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Table
 from sqlalchemy.orm import sessionmaker
 
 from db.models import ( Base, Store, Owner, Inventory )
