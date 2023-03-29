@@ -1,7 +1,7 @@
-from sqlalchemy import (Column, String, Integer, ForeignKey )
+from sqlalchemy import (Column, String, Integer, ForeignKey)
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 
 engine = create_engine('sqlite:///onestopshop.db')
 
@@ -14,7 +14,7 @@ class Store(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     location = Column(String())
-    # supplies = relationship('Inventory', backref=('stores'))
+    supplies = relationship('Inventory', backref=('stores'))
 
     def __repr__(self):
         return f'Store(id={self.id}, ' \
@@ -22,14 +22,14 @@ class Store(Base):
         + f'location={self.location} ' \
         
     
-class Customer(Base):
-    __tablename__ = 'customers'
+class Owner(Base):
+    __tablename__ = 'owners'
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
 
     def __repr__(self):
-        return f'Customer(id={self.id}, ' \
+        return f'Owner(id={self.id}, ' \
         + f'name={self.name}) ' \
 
 class Inventory(Base):
@@ -40,10 +40,10 @@ class Inventory(Base):
     price = Column(Integer())
     quantity = Column(Integer())
     stores_id = Column(Integer(), ForeignKey( Store.id ) )
-    customers_id = Column(Integer(), ForeignKey( Customer.id ) )
+    owners_id = Column(Integer(), ForeignKey( Owner.id ) )
 
     stores = relationship( 'Store', foreign_keys='Inventory.stores_id' )
-    customers = relationship( 'Customer', foreign_keys='Inventory.customers_id' )
+    owners = relationship( 'Owner', foreign_keys='Inventory.owners_id' )
 
     def __repr__(self):
         return f'Inventory(id={self.id}, ' \
@@ -51,4 +51,4 @@ class Inventory(Base):
             + f'price={self.price}, ' \
             + f'quantity={self.quantity}, ' \
             + f'stores_id={self.stores_id}),' \
-            + f'customers_id={self.customers_id})'
+            + f'owners_id={self.owners_id})'
