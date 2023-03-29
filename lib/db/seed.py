@@ -11,7 +11,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    session.query(Customer).delete()
+    # session.query(Customer).delete()
     
     faker = Faker()
 
@@ -33,5 +33,7 @@ if __name__ == '__main__':
         session.commit()
 
         customers.append(customer)
+
+    
 
     

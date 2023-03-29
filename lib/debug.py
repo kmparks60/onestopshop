@@ -11,6 +11,4 @@ if __name__ == '__main__':
     Session = sessionmaker( bind=engine )
     session = Session()
 
-    # breakpoint()
-
-    import ipdb; ipdb.set_trace
+    
