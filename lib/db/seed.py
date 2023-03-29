@@ -14,6 +14,7 @@ if __name__ == '__main__':
     # session.query(Customer).delete()
     
     faker = Faker()
+    print( faker.name() )
 
     item = ["Soda", "Chips", "Chargers", "Sunglasses", "Water", "Candy", "Coffee", "Taquitos", "Hammer"]
 
@@ -23,16 +24,16 @@ if __name__ == '__main__':
 
     customers = []
 
-    for _ in range(7):
+    # for _ in range(7):
         
-        customer = Customer(
-            name=f"{faker.first_name()} {faker.last_name()}"
-        )
+    #     customer = Customer(
+    #         name=f"{faker.first_name()} {faker.last_name()}"
+    #     )
 
-        session.add(customer)
-        session.commit()
+    #     session.add(customer)
+    #     session.commit()
 
-        customers.append(customer)
+    #     customers.append(customer)
 
     
 

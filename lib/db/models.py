@@ -19,7 +19,7 @@ class Store(Base):
     def __repr__(self):
         return f'Store(id={self.id}, ' \
         + f'name={self.name}, ' \
-        + f'location={self.location}, ' \
+        + f'location={self.location} ' \
         
     
 class Customer(Base):
