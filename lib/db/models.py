@@ -1,35 +1,33 @@
-from sqlalchemy import ( PrimaryKeyConstraint, Column, String, Integer )
+from sqlalchemy import (Column, String, Integer, ForeignKey )
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref
 
-# engine = create_engine('sqlite:///onestopshop.db')
+engine = create_engine('sqlite:///onestopshop.db')
 
 Base = declarative_base()
 
 
 class Store(Base):
     __tablename__ = 'stores'
-    __table_args__ = ( PrimaryKeyConstraint( 'id' ),)
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     location = Column(String())
-
-    # bottles = relationship('Bottle', backref=backref('winery'))
+    supplies = relationship('Inventory', backref=('stores'))
 
     def __repr__(self):
         return f'Store(id={self.id}, ' \
-        + f'name={self.name}), ' \
-        + f'location={self.location}'
+        + f'name={self.name}, ' \
+        + f'location={self.location}, ' \
+        
     
 class Customer(Base):
     __tablename__ = 'customers'
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
-    #:Possibly add foreign id key
-
-    # bottles = relationship('Bottle', backref=backref('grape'))
+    supplies = relationship('Inventory', backref=('customers'))
 
     def __repr__(self):
         return f'Customer(id={self.id}, ' + \
@@ -42,11 +40,10 @@ class Inventory(Base):
     item = Column(String())
     price = Column(Integer())
     quantity = Column(Integer())
-    # stores_id = Column(Integer(), ForeignKey('stores.id'))
-    # customers_id = Column(Integer(), ForeignKey('customers.id'))
-
-    # grape = relationship('Grape', backref_populates='bottles')
-    # winery = relationship('Winery', backref_populates='bottles')
+    stores_id = Column(Integer(), ForeignKey('stores.id'))
+    customers_id = Column(Integer(), ForeignKey('customers.id'))
+    # stores = relationship('Store', backref='supplies')
+    # winery = relationship('Winery', backref='supplies')
 
     def __repr__(self):
         return f'Inventory(id={self.id}, ' \
