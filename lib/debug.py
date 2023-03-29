@@ -18,6 +18,11 @@ if __name__ == '__main__':
     # stores = session.query( Store )
     # print( [ store for store in stores ] )
     
+    # mason_parks = Customer( name='Mason Parks' )
+    # session.add( mason_parks )
+    # session.commit()
+    # customers = session.query( Customer )
+    # print( [ customer for customer in customers ] )
 
 
     import ipdb; ipdb.set_trace()
