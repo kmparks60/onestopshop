@@ -17,7 +17,7 @@ class CLI:
 
         exit = False
         while exit == False:
-            option = input(f'To Get Started Type "start"')
+            option = input(f'To Get Started Type "start"\nEnter Text Here ==> ')
             print('')
             if option.lower() == "start":
                 show_stores( self )
@@ -25,14 +25,14 @@ class CLI:
             #     sign_contract( self )
             
 def show_stores( self ):
-    option = input('To View Selection of Stores type "S" or "s"\nTo View Selection of Owners type "O" or "o"\nTo View Inventory type "I" or "i"\nEnter Text Here ==>')
+    option = input('To View Selection of Stores type "S" or "s"\nTo View Selection of Owners type "O" or "o"\nEnter Text Here ==> ')
     print("")
     if option == "S" or option == "s":
         stores_list(self.stores)
     elif option == "O" or option == "o":
         owners_list(self.owners)
-    elif option == "I" or option == "i":
-        supplies_list(self.supplies)
+    # elif option == "I" or option == "i":
+    #     supplies_list(self.stores)
 
 def stores_list(stores):
     print('')
@@ -41,9 +41,13 @@ def stores_list(stores):
 
     for index, store in enumerate(stores):
         print(f"{index +1}. {store.name}")
-
+    
     print('')
-
+    option = input('To View Inventory Type the id of the Store\nEnter Text Here ==> ')
+    print("")
+    if option == stores.id:
+        store_inventory(self.supplies)
+        
 def owners_list(owners):
     print('')
     print('Owners')
@@ -54,15 +58,33 @@ def owners_list(owners):
     
     print('')
 
-def supplies_list(supplies):
+def store_inventory( supplies ):
     print('')
     print('Inventory')
     print('')
 
+    stores_id = option
+    inventory_for_store = list(filter(lambda inventory: inventory.stores_id == stores_id, supplies))
     for index, inventory in enumerate(supplies):
-        print(f"{index +1}. {inventory.name}")
+        print(f"{index +1}. {Inventory.item}")
+        # show_supplies(inventory)
+        print(f"{index +1}. {Inventory.name}")
+    print('')
 
-    print('')   
+# def show_supplies(inventory):
+#     print('')
+#     print(f'Item: {inventory.item}')
+#     print(f'Price: {inventory.price}')
+
+# def supplies_list(supplies):
+    # print('')
+    # print('Inventory')
+    # print('')
+
+#     for index, inventory in enumerate(supplies):
+#         print(f"{index +1}. {Inventory.name}")
+
+#     print('')   
 
 
 def sign_contract( self ):
