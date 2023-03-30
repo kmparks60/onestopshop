@@ -31,8 +31,6 @@ def show_stores( self ):
         stores_list(self.stores)
     elif option == "O" or option == "o":
         owners_list(self.owners)
-    # elif option == "I" or option == "i":
-    #     supplies_list(self.stores)
 
 def stores_list(stores):
     print('')
@@ -53,20 +51,28 @@ def stores_list(stores):
         jj_inventory()
 
 
-def oss_inventory(supplies):
+def oss_inventory():
     print('')
-    oss_list = [s.item for s in supplies ]
-    print(oss_list)
+    stores_id=1
+    supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
+    for item in supplies:
+        print(item.item)
     print('')
 
 def bb_inventory():
     print('')
-    print('Inventory for Bud and Booze')
+    stores_id=2
+    supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
+    for item in supplies:
+        print(item.item)
     print('')
 
 def jj_inventory():
     print("")
-    print("Inventory for Joystick Junction")
+    stores_id=3
+    supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
+    for item in supplies:
+        print(item.item)
     print("")
 
 def owners_list(owners):
