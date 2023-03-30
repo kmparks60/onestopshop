@@ -43,11 +43,32 @@ def stores_list(stores):
         print(f"{index +1}. {store.name}")
     
     print('')
-    option = input('To View Inventory Type the id of the Store\nEnter Text Here ==> ')
+    option = input('To View Inventory Enter the id of the Store\nEnter Text Here ==> ')
     print("")
-    if option == stores.id:
-        store_inventory(self.supplies)
-        
+    if option == "1":
+        oss_inventory()
+    elif option == "2":
+        bb_inventory()
+    elif option == "3":
+        jj_inventory()
+
+
+def oss_inventory(supplies):
+    print('')
+    oss_list = [s.item for s in supplies ]
+    print(oss_list)
+    print('')
+
+def bb_inventory():
+    print('')
+    print('Inventory for Bud and Booze')
+    print('')
+
+def jj_inventory():
+    print("")
+    print("Inventory for Joystick Junction")
+    print("")
+
 def owners_list(owners):
     print('')
     print('Owners')
@@ -58,18 +79,17 @@ def owners_list(owners):
     
     print('')
 
-def store_inventory( supplies ):
-    print('')
-    print('Inventory')
-    print('')
-
-    stores_id = option
-    inventory_for_store = list(filter(lambda inventory: inventory.stores_id == stores_id, supplies))
-    for index, inventory in enumerate(supplies):
-        print(f"{index +1}. {Inventory.item}")
-        # show_supplies(inventory)
-        print(f"{index +1}. {Inventory.name}")
-    print('')
+    option = input('To View Which Stores That Each Owner Owns Enter Number\nEnter Text Here ==> ')
+    print("")
+    if option == "1":
+        print("1. One Stop Shop")
+        print("")
+    elif option == "2":
+        print("2. Budz and Booze")
+        print("")
+    elif option == "3":
+        print("3. Joystick Junction")
+        print("")
 
 # def show_supplies(inventory):
 #     print('')
