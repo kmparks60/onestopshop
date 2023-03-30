@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-engine = create_engine('sqlite:///onestopshop.db')
+engine = create_engine('sqlite:///lib/onestopshop.db')
 
 Base = declarative_base()
 
@@ -37,7 +37,6 @@ class Inventory(Base):
     id = Column(Integer(), primary_key=True)
     item = Column(String())
     price = Column(Integer())
-    quantity = Column(Integer())
     stores_id = Column(Integer(), ForeignKey( Store.id ) )
     owners_id = Column(Integer(), ForeignKey( Owner.id ) )
 
@@ -48,6 +47,5 @@ class Inventory(Base):
         return f'Inventory(id={self.id}, ' \
             + f'item={self.item}, ' \
             + f'price={self.price}, ' \
-            + f'quantity={self.quantity}, ' \
-            + f'stores_id={self.stores_id}),' \
+            + f'stores_id={self.stores_id},' \
             + f'owners_id={self.owners_id})'

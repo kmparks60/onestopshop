@@ -22,7 +22,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('item', sa.String(), nullable=True),
     sa.Column('price', sa.Integer(), nullable=True),
-    sa.Column('quantity', sa.Integer(), nullable=True),
+    sa.Column('stores_id', sa.Integer(), nullable=True),
+    sa.Column('owners_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['stores_id'], ['stores.id'], ),
+    sa.ForeignKeyConstraint(['owners_id'], ['owners.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
