@@ -56,7 +56,7 @@ def oss_inventory():
     stores_id=1
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
     for item in supplies:
-        print(item.item)
+        print(f'{item.item} ${item.price}')
     print('')
 
 def bb_inventory():
@@ -64,7 +64,7 @@ def bb_inventory():
     stores_id=2
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
     for item in supplies:
-        print(item.item)
+        print(f'{item.item} ${item.price}')
     print('')
 
 def jj_inventory():
@@ -72,7 +72,7 @@ def jj_inventory():
     stores_id=3
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
     for item in supplies:
-        print(item.item)
+        print(f'{item.item} ${item.price}')
     print("")
 
 def owners_list(owners):
@@ -96,22 +96,6 @@ def owners_list(owners):
     elif option == "3":
         print("3. Joystick Junction")
         print("")
-
-# def show_supplies(inventory):
-#     print('')
-#     print(f'Item: {inventory.item}')
-#     print(f'Price: {inventory.price}')
-
-# def supplies_list(supplies):
-    # print('')
-    # print('Inventory')
-    # print('')
-
-#     for index, inventory in enumerate(supplies):
-#         print(f"{index +1}. {Inventory.name}")
-
-#     print('')   
-
 
 def sign_contract( self ):
     print("contract be here")
