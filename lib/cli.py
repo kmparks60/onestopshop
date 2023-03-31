@@ -2,6 +2,7 @@ from db.models import Store, Owner, Inventory
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 class CLI:
     def __init__(self, user_input):
         self.stores = [ store for store in session.query( Store ) ]
@@ -55,24 +56,24 @@ def oss_inventory():
     print('')
     stores_id=1
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
-    for item in supplies:
-        print(f'{item.item} ${item.price}')
+    for i, item in enumerate(supplies, start=1):
+        print(f'{i}.{item.item} ${item.price}')
     print('')
 
 def bb_inventory():
     print('')
     stores_id=2
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
-    for item in supplies:
-        print(f'{item.item} ${item.price}')
+    for i, item in enumerate(supplies, start=1):
+        print(f'{i}.{item.item} ${item.price}')
     print('')
 
 def jj_inventory():
     print("")
     stores_id=3
     supplies=session.query(Inventory).filter_by(stores_id=stores_id).all()
-    for item in supplies:
-        print(f'{item.item} ${item.price}')
+    for i, item in enumerate(supplies, start=1):
+        print(f'{i}.{item.item} ${item.price}')
     print("")
 
 def owners_list(owners):
@@ -111,5 +112,5 @@ if __name__ == '__main__':
     engine = create_engine('sqlite:///onestopshop.db')
     Session = sessionmaker(bind=engine)
     session = Session()
-    user_input = input("Testing, please enter anything to get started: ")
+    user_input = input("\nPress Enter Key To Get Started\n==>")
     CLI(user_input)
